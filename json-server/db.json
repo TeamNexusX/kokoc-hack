@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "firstname": "Родион",
+      "lastname": "Корчак",
+      "sex":  "male",
+      "avatar": "",
+      "roles":  ["ADMIN", "USER"],
+      "login": "keyready",
+      "password": "123"
+    }
+  ]
+}

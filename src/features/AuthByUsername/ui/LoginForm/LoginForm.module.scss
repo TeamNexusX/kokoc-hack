@@ -1,0 +1,25 @@
+* {
+    font: var(--font-m)
+}
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.loginBtn {
+    margin-top: 15px;
+    margin-left: auto;
+}
+
+.loginError {
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--light-red);
+    background: var(--inverted-bg-color);
+}
+
+.newAccount {
+    margin-top: 20px;
+}
