@@ -1,0 +1,65 @@
+.Disclosure {
+
+}
+
+.button {
+    width: 100%;
+
+    p {
+        color: #000;
+        font-weight: bold;
+        text-align: left
+    }
+}
+
+.open {
+    transform: rotate(180deg);
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    transition: 100ms;
+}
+
+.panel {
+    h1 {
+        color: #000;
+        font: var(--font-m);
+        font-weight: bold;
+        text-indent: 10px;
+    }
+
+    p {
+        color: #000;
+    }
+}
+
+.enter {
+    transition: 100ms ease-in;
+}
+
+.enterFrom {
+    opacity: 0.6;
+    transform: scale(0.95);
+}
+
+.enterTo {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.leave {
+    transition: 100ms ease-in;
+}
+
+.leaveFrom {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.leaveTo {
+    opacity: 0.6;
+    transform: scale(0.95);
+}
+

@@ -3,6 +3,7 @@ import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { UIReducer } from 'features/UI';
 import { rtkApi } from 'shared/api/rtkApi';
+import { mainPageReducer } from 'pages/MainPage/model/slice/MainPageSlice';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './StateSchema';
 
@@ -13,6 +14,7 @@ export function CreateReduxStore(
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...lazyReducers,
         user: userReducer,
+        mainPage: mainPageReducer,
         ui: UIReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };

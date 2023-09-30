@@ -2,13 +2,13 @@
     cursor: pointer;
     padding: 5px 15px;
     border-radius: 5px;
-    color: var(--inverted-primary-color);
-    background: var(--inverted-bg-color);
+    color: #000;
+    background: var(--primary-color);
     font: var(--font-m);
     transition: 200ms;
 
     &:hover {
-        background: var(--bg-color);
+        filter: brightness(0.9);
     }
 
     &:active {

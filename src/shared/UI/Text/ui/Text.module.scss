@@ -1,3 +1,16 @@
+.text {
+    font: var(--font-m);
+}
+
+.bold {
+    p {
+        font-weight: bold !important;
+    }
+    h1 {
+        font-weight: bold !important;
+    }
+}
+
 .center {
     text-align: center;
 }

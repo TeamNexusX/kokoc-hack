@@ -16,6 +16,7 @@ interface TextProps {
     align?: TextAlign;
     size?: TextSize;
     variant?: TextVariant;
+    bold?: boolean;
 }
 
 export const Text = memo((props: TextProps) => {
@@ -26,6 +27,7 @@ export const Text = memo((props: TextProps) => {
         align = 'left',
         size = 'large',
         variant = 'primary',
+        bold = false,
     } = props;
 
     const variantsClasses = variantsMapper[variant];
@@ -37,8 +39,32 @@ export const Text = memo((props: TextProps) => {
 
     return (
         <div className={classNames(classes.Text, {}, add)}>
-            {title && <HeaderTag className={classes.title}>{title}</HeaderTag>}
-            {text && <p className={classes.text}>{text}</p>}
+            {title && (
+                <HeaderTag
+                    className={classNames(
+                        classes.title,
+                        {
+                            [classes.bold]: bold,
+                        },
+                        [],
+                    )}
+                >
+                    {title}
+                </HeaderTag>
+            )}
+            {text && (
+                <p
+                    className={classNames(
+                        classes.text,
+                        {
+                            [classes.bold]: bold,
+                        },
+                        [],
+                    )}
+                >
+                    {text}
+                </p>
+            )}
         </div>
     );
 });

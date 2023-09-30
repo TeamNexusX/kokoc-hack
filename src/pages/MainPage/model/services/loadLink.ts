@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { User } from 'entities/User';
 import { ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema';
 import { AxiosError } from 'axios';
-import { RespondType } from 'pages/MainPage/model/types/RespondType';
+import { RespondType } from '../types/RespondType';
 
 interface LoadLinkInfoProps {
     link: string;

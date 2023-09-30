@@ -2,6 +2,7 @@ import { RouteProps } from 'react-router-dom';
 import { MainPage } from 'pages/MainPage';
 import { NotFound } from 'pages/CommonPages/NotFound';
 import { ForbiddenPage } from 'pages/CommonPages/ForbiddenPage';
+import { ResultPage } from 'pages/ResultPage';
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
@@ -9,6 +10,7 @@ export type AppRoutesProps = RouteProps & {
 
 export enum AppRoutes {
     MAIN = 'main',
+    RESULT = 'result',
 
     // last
     NOT_FOUND = 'not_found',
@@ -17,6 +19,7 @@ export enum AppRoutes {
 
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
+    [AppRoutes.RESULT]: '/result',
 
     // last
     [AppRoutes.FORBIDDEN]: '/forbidden',
@@ -27,7 +30,10 @@ export const routerConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath.main,
         element: <MainPage />,
-        authOnly: true,
+    },
+    [AppRoutes.RESULT]: {
+        path: `${RoutePath.result}`,
+        element: <ResultPage />,
     },
 
     // last

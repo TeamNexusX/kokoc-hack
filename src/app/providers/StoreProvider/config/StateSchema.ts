@@ -14,12 +14,12 @@ import { MainPageSchema } from 'pages/MainPage';
 
 export interface StateSchema {
     user: UserSchema;
+    mainPage: MainPageSchema;
     ui: UISchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     // asynchronous reducers
     loginForm?: LoginSchema;
-    mainPage?: MainPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

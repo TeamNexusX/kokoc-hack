@@ -4,4 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 interface NotificationProps {}
 
-export const Notification = (props: NotificationProps) => <ToastContainer />;
+export const Notification = (props: NotificationProps) => (
+    <ToastContainer position="top-center" />
+);
