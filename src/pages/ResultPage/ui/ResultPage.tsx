@@ -31,7 +31,8 @@ const ResultPage = memo((props: ResultPageProps) => {
 
     return (
         <Page className={classNames(classes.ResultPage, {}, [className])}>
-            <VStack gap="32" maxW align="center" justify="start">
+            <VStack gap="32" maxW align="center"
+justify="start">
                 <Card>
                     <HStack maxW justify="between" align="center">
                         <Text className={classes.title} text="Ссылка" />

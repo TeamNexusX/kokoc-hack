@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Popover as HPopover, Transition } from '@headlessui/react';
+import { Popover as HPopover } from '@headlessui/react';
 import { ListBoxDirections } from 'shared/types/ui';
 import { ReactNode } from 'react';
 import { directionsMapper } from '../../styles/consts';

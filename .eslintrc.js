@@ -4,11 +4,7 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: [
-        'plugin:react/recommended',
-        'airbnb',
-        'prettier',
-    ],
+    extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -17,12 +13,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: [
-        'react',
-        '@typescript-eslint',
-        'react-hooks',
-        'fsd-path-checker-keyready',
-    ],
+    plugins: ['react', '@typescript-eslint', 'react-hooks', 'fsd-path-checker-keyready'],
     rules: {
         'react/button-has-type': 'off',
         'fsd-path-checker-keyready/path-checker-fsd': 'error',
@@ -56,5 +47,5 @@ module.exports = {
     globals: {
         IS_DEV: true,
         __API__: true,
-    }
+    },
 };

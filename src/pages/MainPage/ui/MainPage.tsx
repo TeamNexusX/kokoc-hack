@@ -7,18 +7,14 @@ import { toast } from 'react-toastify';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Loader } from 'shared/UI/Loader';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { addQueryParams } from 'shared/url/addQueryParams/addQueryParams';
 import { Button } from 'shared/UI/Button';
-import { mainPageActions, mainPageReducer } from '../model/slice/MainPageSlice';
+import { mainPageActions } from '../model/slice/MainPageSlice';
 import classes from './MainPage.module.scss';
 import { loadLink } from '../model/services/loadLink';
-import { isLinkLoading, linkError, linkResult } from '../model/selectors/getPageInfo';
+import { isLinkLoading, linkError } from '../model/selectors/getPageInfo';
 
 const MainPage = () => {
     const [value, setValue] = useState<string>('');
@@ -107,7 +103,8 @@ const MainPage = () => {
 
     return (
         <Page>
-            <VStack maxH maxW align="center" justify="center">
+            <VStack maxH maxW align="center"
+justify="center">
                 <Notification />
 
                 {isLoading ? (

@@ -14,7 +14,7 @@ interface SignUpUserProps {
 export const signupUser = createAsyncThunk<User, SignUpUserProps, ThunkConfig<string>>(
     'login/signupUser',
     async (authData, thunkAPI) => {
-        const { extra, dispatch, rejectWithValue } = thunkAPI;
+        const { extra, rejectWithValue } = thunkAPI;
 
         try {
             const response = await extra.api.post<User>('/api/signup', authData);
