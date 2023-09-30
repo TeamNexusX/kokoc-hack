@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controllers/search_controller.dart';
+import '../../data/controllers/search_controller.dart';
 import 'widgets/result_Item.dart';
 
 class SearchPage extends GetView<SearchPageController> {
@@ -26,7 +26,7 @@ class SearchPage extends GetView<SearchPageController> {
             SizedBox(height: 20.0),
             _buildLogo(),
             SizedBox(height: 40.0),
-            _buildTextField(context),
+            _buildSearchField(context),
             SizedBox(height: 20.0),
             Obx(() => _buildResultList()),
             SizedBox(height: 20.0),
@@ -90,7 +90,7 @@ class SearchPage extends GetView<SearchPageController> {
     );
   }
 
-  TextField _buildTextField(BuildContext context) {
+  TextField _buildSearchField(BuildContext context) {
     return TextField(
       controller: controller.searchController,
       onSubmitted: (value) {
