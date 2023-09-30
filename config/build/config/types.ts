@@ -6,6 +6,8 @@ export interface buildPaths {
     src: string;
     locales: string;
     buildLocales: string;
+    imagesFrom: string;
+    imagesTo: string;
 }
 
 export interface BuildOptions {

@@ -24,7 +24,7 @@ export const Text = memo((props: TextProps) => {
         title,
         text,
         align = 'left',
-        size = 'medium',
+        size = 'large',
         variant = 'primary',
     } = props;
 

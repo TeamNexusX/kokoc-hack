@@ -24,6 +24,10 @@ export function buildRules(options: BuildOptions): webpack.RuleSetRule[] {
     };
 
     const sassLoader = BuildCssLoader(isDev);
+    const cssLoader = {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+    }
 
     return [
         fileLoader,
@@ -31,5 +35,6 @@ export function buildRules(options: BuildOptions): webpack.RuleSetRule[] {
         codeBabelLoader,
         tsxCodeBabelLoader,
         sassLoader,
+        cssLoader
     ];
 }

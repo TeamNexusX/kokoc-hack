@@ -4,11 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "webpack serve --env port=1488 apiUrl=http://localhost:9999",
+        "start": "webpack serve --env port=1488 apiUrl=http://localhost:5000",
         "start:server": "nodemon ./server/server.js",
         "start:dev": "concurrently -n CLIENT,SERVER -c blue,yellow \"npm run start\" \"npm run start:server\"",
         "init": "npm install --force",
-        "build": "webpack --env mode=production apiUrl=http://localhost:9999/",
+        "build": "webpack --env mode=production apiUrl=http://localhost:5000/",
         "lint_project": "concurrently -n Prettier,ESlint,Stylelint -c blue,yellow,green \"npm run prettier\" \"npm run lint:ts\" \"npm run lint:scss\"",
         "prettier": "npx prettier --write **/*.{js,jsx,ts,tsx}",
         "lint:ts": "eslint \"**/*.{ts,tsx}\" --fix",
@@ -40,7 +40,7 @@
         "babel-loader": "^8.2.3",
         "circular-dependency-plugin": "^5.2.2",
         "copy-webpack-plugin": "^10.2.4",
-        "css-loader": "^6.6.0",
+        "css-loader": "^6.8.1",
         "eslint": "8.22.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-prettier": "^8.8.0",
@@ -77,11 +77,17 @@
         "@reduxjs/toolkit": "^1.8.0",
         "axios": "^0.26.1",
         "concurrently": "^7.6.0",
+        "glob": "^10.3.10",
+        "i18next": "^23.5.1",
+        "i18next-browser-languagedetector": "^7.1.0",
+        "i18next-http-backend": "^2.2.2",
         "js-cookie": "^3.0.5",
         "react": "^18.2.0",
         "react-device-detect": "^2.2.3",
         "react-dom": "^18.2.0",
+        "react-i18next": "^13.2.2",
         "react-redux": "^7.2.6",
-        "react-router-dom": "^6.2.1"
+        "react-router-dom": "^6.2.1",
+        "react-toastify": "^9.1.3"
     }
 }

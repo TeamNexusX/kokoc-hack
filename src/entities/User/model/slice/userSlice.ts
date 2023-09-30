@@ -28,8 +28,6 @@ export const userSlice = createSlice({
         logout: (state) => {
             // выход
             Cookie.remove(USER_Cookie_KEY);
-            window.location.replace(RoutePath.unauthorized);
-            state.authData = undefined;
         },
     },
 });
