@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RespondType } from '../types/RespondType';
 import { loadLink } from '../services/loadLink';
 import { MainPageSchema } from '../types/MainPageSchema';
 
@@ -20,7 +21,7 @@ export const MainPageSlice = createSlice({
                 state.error = undefined;
                 state.isLoading = true;
             })
-            .addCase(loadLink.fulfilled, (state, action: PayloadAction<ResponseType>) => {
+            .addCase(loadLink.fulfilled, (state, action: PayloadAction<RespondType>) => {
                 state.isLoading = false;
                 state.data = action.payload;
             })

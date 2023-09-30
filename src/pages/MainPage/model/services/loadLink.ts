@@ -2,20 +2,21 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { User } from 'entities/User';
 import { ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema';
 import { AxiosError } from 'axios';
+import { RespondType } from 'pages/MainPage/model/types/RespondType';
 
 interface LoadLinkInfoProps {
     link: string;
 }
 
 export const loadLink = createAsyncThunk<
-    ResponseType,
+    RespondType,
     LoadLinkInfoProps,
     ThunkConfig<string>
 >('mainPage/loadLink', async (link, thunkAPI) => {
     const { extra, rejectWithValue } = thunkAPI;
 
     try {
-        const response = await extra.api.post<ResponseType>('/api/load_link', link);
+        const response = await extra.api.post<RespondType>('/api/load_link', link);
 
         if (!response.data) {
             throw new Error();
