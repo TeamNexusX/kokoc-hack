@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class ResultItem extends StatelessWidget {
   String title;
   String description;
@@ -18,7 +19,7 @@ class ResultItem extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Colors.white,
+              color: Get.theme.colorScheme.primary,
               width: 1,
             )),
         width: Get.width,

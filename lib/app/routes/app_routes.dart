@@ -10,10 +10,5 @@ class AppRoutes {
       page: () => SearchPage(),
       binding: SearchBinding(),
     ),
-    // GetPage(
-    //   name: '/result',
-    //   page: () =>  SearchResultPage(),
-    //   binding: SearchResultBinding(),
-    // ),
   ];
 }

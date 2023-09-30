@@ -5,6 +5,7 @@ class SearchPageController extends GetxController {
   final searchController = TextEditingController();
   final isSearch = false.obs;
   final showResult = false.obs;
+  final isLightTheme = false.obs;
 
   search() {
     isSearch.value = true;
