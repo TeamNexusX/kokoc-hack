@@ -167,7 +167,7 @@ class SearchPage extends GetView<SearchPageController> {
                 description: controller.category.value,
               ),
             ]);
-      // ПЕЧАЛЬь
+      // хакатон идет , какой спать
     } else {
       return Container();
     }
