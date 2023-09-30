@@ -1,18 +1,32 @@
-import { useTranslation } from 'react-i18next';
 import { Page } from 'widgets/Page/Page';
-import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
-import { HStack, VStack } from 'shared/UI/Stack';
-import { Text } from 'shared/UI/Text';
+import { VStack } from 'shared/UI/Stack';
 import { SearchInput } from 'shared/UI/SearchInput';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Notification } from 'shared/UI/Notification';
-import { Button } from 'shared/UI/Button';
 import { toast } from 'react-toastify';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { Loader } from 'shared/UI/Loader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { mainPageReducer } from '../model/slice/MainPageSlice';
 import classes from './MainPage.module.scss';
+import { loadLink } from '../model/services/loadLink';
+import { isLinkLoading, linkError, linkResult } from '../model/selectors/getPageInfo';
+
+const reducers: ReducersList = {
+    mainPage: mainPageReducer,
+};
 
 const MainPage = () => {
     const [value, setValue] = useState<string>('');
+
+    const dispatch = useAppDispatch();
+
+    const isLoading = useSelector(isLinkLoading);
+    const error = useSelector(linkError);
 
     useEffect(() => {
         const keyDownHandler = async (event: KeyboardEvent) => {
@@ -46,25 +60,36 @@ const MainPage = () => {
         };
     }, []);
 
+    const handleFindLink = useCallback(() => {
+        dispatch(loadLink({ link: value }));
+    }, [dispatch, value]);
+
     return (
-        <Page>
-            <VStack maxH maxW align="center" justify="center">
-                <Notification />
+        <DynamicModuleLoader reducers={reducers}>
+            <Page>
+                <VStack maxH maxW align="center" justify="center">
+                    <Notification />
 
-                <SearchInput
-                    className={classes.input}
-                    value={value}
-                    onChange={setValue}
-                    placeholder="Введите ссылку или просто нажмите CTRL+V в любом месте страницы..."
-                />
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        <SearchInput
+                            className={classes.input}
+                            value={value}
+                            onChange={setValue}
+                            onSearchClick={handleFindLink}
+                            placeholder="Введите ссылку или просто нажмите CTRL+V в любом месте страницы..."
+                        />
+                    )}
 
-                <img
-                    className={classes.pict}
-                    src="assets/images/main-pict.webp"
-                    alt="Тут должна быть картинка..."
-                />
-            </VStack>
-        </Page>
+                    <img
+                        className={classes.pict}
+                        src="assets/images/main-pict.webp"
+                        alt="Тут должна быть картинка..."
+                    />
+                </VStack>
+            </Page>
+        </DynamicModuleLoader>
     );
 };
 

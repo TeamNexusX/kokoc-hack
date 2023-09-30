@@ -10,6 +10,7 @@ import { AxiosInstance } from 'axios';
 import { UISchema } from 'features/UI';
 import { rtkApi } from 'shared/api/rtkApi';
 import { LoginSchema } from 'features/AuthByUsername';
+import { MainPageSchema } from 'pages/MainPage';
 
 export interface StateSchema {
     user: UserSchema;
@@ -18,6 +19,7 @@ export interface StateSchema {
 
     // asynchronous reducers
     loginForm?: LoginSchema;
+    mainPage?: MainPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
