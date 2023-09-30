@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../build')));
 app.use(cors());
 
-app.post('/api/load_link', (req, res) => {
+app.post('/check_domain', (req, res) => {
     const { link } = req.query;
 
     return res.status(200).json({
