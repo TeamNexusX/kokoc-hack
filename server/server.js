@@ -13,7 +13,13 @@ app.use(cors());
 app.post('/api/load_link', (req, res) => {
     const { link } = req.query;
 
-    return res.status(500).json({ message: 'ошибка сервера' });
+    return res.status(200).json({
+        category: 'Бизнес',
+        theme: 'Что-то на бизнесевском',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias aliquam deserunt doloribus eos harum minus nemo officiis omnis, perspiciatis possimus quod reiciendis, sint tenetur unde vero voluptate voluptates voluptatum.',
+        domainInfo: 'Расположение: Россия',
+    });
 });
 
 app.listen(port, () => {

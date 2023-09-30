@@ -14,7 +14,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { addQueryParams } from 'shared/url/addQueryParams/addQueryParams';
-import { mainPageReducer } from '../model/slice/MainPageSlice';
+import { Button } from 'shared/UI/Button';
+import { mainPageActions, mainPageReducer } from '../model/slice/MainPageSlice';
 import classes from './MainPage.module.scss';
 import { loadLink } from '../model/services/loadLink';
 import { isLinkLoading, linkError, linkResult } from '../model/selectors/getPageInfo';
@@ -88,13 +89,18 @@ const MainPage = () => {
         };
     }, [handleFindLink]);
 
+    const clearError = useCallback(() => {
+        dispatch(mainPageActions.setError(''));
+        setValue('');
+    }, [dispatch]);
+
     if (error) {
-        toast('На сервере произошла ошибка', {
-            type: 'error',
-        });
         return (
-            <Page>
-                <h1>На сервере произошла ошибка. Попробуйте другую ссылку</h1>
+            <Page className={classes.errorPage}>
+                <h1 className={classes.error}>
+                    На сервере произошла ошибка. Попробуйте другую ссылку
+                </h1>
+                <Button onClick={clearError}>Назад</Button>
             </Page>
         );
     }

@@ -36,6 +36,7 @@ export const SearchInput = memo((props: SearchInputProps) => {
             align="center"
         >
             <input
+                autoFocus
                 onChange={onValueChange}
                 value={value}
                 placeholder={placeholder}

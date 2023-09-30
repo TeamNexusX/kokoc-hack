@@ -28,10 +28,7 @@ export const MainPageSlice = createSlice({
             .addCase(loadLink.rejected, (state, action) => {
                 state.isLoading = false;
                 // @ts-ignore
-                if (!action?.payload?.message) {
-                    // @ts-ignore
-                    state.error = action.payload.message;
-                } else state.error = 'Непредвиденная ошибка: не пришло сообщение сервера';
+                state.error = action.payload.message;
             });
     },
 });

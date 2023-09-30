@@ -4,3 +4,15 @@
 .input {
     margin-bottom: 60px;
 }
+
+.error {
+    color: var(--dark-red) !important;
+}
+
+.errorPage {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px
+}

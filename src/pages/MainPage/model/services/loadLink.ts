@@ -15,7 +15,9 @@ export const loadLink = createAsyncThunk<
     const { extra, rejectWithValue } = thunkAPI;
 
     try {
-        const response = await extra.api.post<RespondType>('/api/load_link', link);
+        const response = await extra.api.post<RespondType>('/check_domain', {
+            url: link.link,
+        });
 
         if (!response.data) {
             throw new Error();
