@@ -22,7 +22,7 @@ class SearchPageController extends GetxController {
       final response = await http.get(Uri.parse('http://192.168.56.1:5001'));
 
       if (response.statusCode == 200) {
-        // If the server returns a 200 OK response, parse the JSON.
+        // хакатон идет , какой спать
         print(response.body);
         SearchResult result = SearchResult.fromJson(response.body);
         theme.value = result.theme;
