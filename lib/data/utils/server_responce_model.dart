@@ -5,10 +5,14 @@ class SearchResult {
   final String category;
   final String theme;
   final String description;
+  final String link;
+  final String subinfo;
   SearchResult({
     required this.category,
     required this.theme,
     required this.description,
+    required this.link,
+    required this.subinfo,
   });
 
   Map<String, dynamic> toMap() {
@@ -16,6 +20,8 @@ class SearchResult {
       'category': category,
       'theme': theme,
       'description': description,
+      'link': link,
+      'subinfo': subinfo,
     };
   }
 
@@ -24,6 +30,8 @@ class SearchResult {
       category: map['category'] as String,
       theme: map['theme'] as String,
       description: map['description'] as String,
+      link: map['link'] as String,
+      subinfo: map['subinfo'] as String,
     );
   }
 

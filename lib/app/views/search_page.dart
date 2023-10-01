@@ -148,6 +148,10 @@ class SearchPage extends GetView<SearchPageController> {
       return controller.isSearch.value
           ? CircularProgressIndicator()
           : Column(children: [
+              ResultItem(title: "Cсылка", description: controller.link.value),
+              SizedBox(
+                height: 20,
+              ),
               ResultItem(
                 title: 'Тема',
                 description: controller.theme.value,
@@ -166,6 +170,13 @@ class SearchPage extends GetView<SearchPageController> {
                 title: 'Информация о домене',
                 description: controller.category.value,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              ResultItem(
+                title: 'Дополнительная информация',
+                description: controller.subinfo.value,
+              )
             ]);
     } else {
       return Container();

@@ -7,6 +7,8 @@ import '../utils/server_responce_model.dart';
 class SearchPageController extends GetxController {
   final serverController = TextEditingController();
   final searchController = TextEditingController();
+  final link = ''.obs;
+  final subinfo = ''.obs;
   final theme = ''.obs;
   final description = ''.obs;
   final category = ''.obs;
@@ -19,16 +21,19 @@ class SearchPageController extends GetxController {
       isSearch.value = true;
       showResult.value = true;
 
-      final response = await http.get(Uri.parse('http://192.168.56.1:5001'));
+      final response = await http.get(Uri.parse('http://192.168.88.88:5000'));
+      print(response.body);
 
       if (response.statusCode == 200) {
         // хакатон идет , какой спать
-        print(response.body);
         SearchResult result = SearchResult.fromJson(response.body);
         theme.value = result.theme;
         description.value = result.description;
         category.value = result.category;
+        subinfo.value = result.subinfo;
+        link.value = result.link;
       } else {
+        Get.snackbar('Error', "Failed to load data");
         // If the server returns an unsuccessful response code, throw an exception.
         throw Exception('Failed to load data');
       }
