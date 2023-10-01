@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend_kokos
+    image: backend_kokos
+    build: ./server
+    command: >
+      sh -c  "gunicorn -w 4 --bind 0.0.0.0:5000 manage:app --reload && python manage.py create_db"
+    restart: unless-stopped
+    volumes:
+      - ./server:/backend # Проброс всего кода в докер для dev-режима
+    ports:
+      - 5000:5000
+    networks:
+      - custom_network_kokos
+
+  admin:
+    container_name: admin_kokos
+    image: admin_kokos
+    build: ./admin
+    restart: unless-stopped
+    command: gunicorn -w 4 --bind 0.0.0.0:5001 app:app --reload
+    ports:
+      - 5001:5001
+    networks:
+      - custom_network_kokos
+    
+  nginx:
+    container_name: nginx_kokos
+    image: nginx_kokos
+    build: ./nginx
+    restart: unless-stopped
+    volumes:
+      - ./server/src/static:/static
+    ports:
+      - 80:80
+    networks:
+      - custom_network_kokos
+  db:
+    container_name: db_kokos
+    image: postgres:15-alpine
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    networks:
+      - custom_network_kokos
+
+networks:
+  custom_network_kokos:
+    driver: bridge
+    name: custom_network_kokos

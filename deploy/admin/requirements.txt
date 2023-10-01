@@ -1,0 +1,5 @@
+flask
+flask_admin
+gunicorn
+flask_sqlalchemy
+psycopg2-binary
