@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Page } from 'widgets/Page/Page';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { Card } from 'shared/UI/Card';
 import { Text } from 'shared/UI/Text';
 import { HStack, VStack } from 'shared/UI/Stack';
@@ -8,10 +8,11 @@ import LinkIcon from 'shared/assets/icons/link.svg';
 import { Button } from 'shared/UI/Button';
 import { Disclosure } from 'shared/UI/Disclosure';
 import { useSelector } from 'react-redux';
-import { linkResult } from 'pages/MainPage';
+import { linkResult, loadLink } from 'pages/MainPage';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from 'shared/UI/Icon/Icon';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import classes from './ResultPage.module.scss';
 
 interface ResultPageProps {
@@ -21,10 +22,17 @@ interface ResultPageProps {
 const ResultPage = memo((props: ResultPageProps) => {
     const { className } = props;
 
-    const link = new URLSearchParams(window.location.search).get('link');
+    const link: string = new URLSearchParams(window.location.search).get('link') || '';
     const data = useSelector(linkResult);
 
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (!data) {
+            dispatch(loadLink({ link }));
+        }
+    }, [data, dispatch, link]);
 
     if (!link) {
         navigate(RoutePath.main);

@@ -7,7 +7,7 @@
         "start": "webpack serve --env port=1488 apiUrl=http://localhost:5000",
         "start:server": "nodemon ./server/server.js",
         "start:dev": "concurrently -n CLIENT,SERVER -c blue,yellow \"npm run start\" \"cd server && npm run start\"",
-        "init": "npm install --force",
+        "init": "npm install --force && cd server && npm install --force",
         "build": "webpack --env mode=production apiUrl=http://localhost:5000/",
         "lint_project": "concurrently -n Prettier,ESlint,Stylelint -c blue,yellow,green \"npm run prettier\" \"npm run lint:ts\" \"npm run lint:scss\"",
         "prettier": "npx prettier --write **/*.{js,jsx,ts,tsx}",
