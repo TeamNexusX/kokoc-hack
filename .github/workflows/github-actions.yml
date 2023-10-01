@@ -1,22 +1,35 @@
-name: CI/CD
+name: CI/CD Workflow
 
 on:
   push:
-    branches:
-      - '*'
+    branches: [ dev-client ]
 
 jobs:
-  build:
+  install_dependencies:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Проверка репозитория
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Установка зависимостей
-        run: npm install --force
+      - name: Install dependencies
+        run: npm run init
 
-      - name: Запуск линтеров
-        run: npm install --force
+  run_linters:
+    needs: install_dependencies
+    runs-on: ubuntu-latest
 
-      - name: Сборка приложения
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run linters
+        run: npm run lint_project
+
+  build:
+    needs: run_linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
         run: npm run build
